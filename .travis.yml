@@ -6,10 +6,10 @@ addons:
   apt:
     packages: [ libevent-dev ]
 
-install: $DMD -ofci_setup ci_setup.d && ./ci_setup
-
 # https://travis-ci.community/t/mariadb-10-1-fails-to-install-on-xenial/3151/4
-before_script: mysql -u root -e 'CREATE USER IF NOT EXISTS travis@localhost; GRANT ALL ON *.* TO travis@localhost;'
+before_install: mysql -u root -e 'CREATE USER IF NOT EXISTS travis@localhost; GRANT ALL ON *.* TO travis@localhost;'
+
+install: $DMD -ofci_setup ci_setup.d && ./ci_setup
 
 script: ./run_tests --mode=combined
 
@@ -91,7 +91,7 @@ matrix:
       env: DUB_SELECT=vibe-0.8.3 # DMDFE 2.079+ doesn't support vibe.d v0.7.32
 
     # Test alternative db versions, but only on one compiler version
-    - d: dmd-2.078.3
+    - d: dmd
       services:
         - mysql
       addons: # Remove "mariadb: ..." from default addons, but keep "libevent-dev"
@@ -99,28 +99,28 @@ matrix:
           packages: [ libevent-dev ]
       env: DB=mysql-default USE_UNIT_THREADED=true
 
-    - d: dmd-2.078.3
+    - d: dmd
       addons:
         mariadb: '5.5'
         apt:
           packages: [ libevent-dev ]
       env: DB=mariadb-5.5 USE_UNIT_THREADED=true
 
-    - d: dmd-2.078.3
+    - d: dmd
       addons:
         mariadb: '10.0'
         apt:
           packages: [ libevent-dev ]
       env: DB=mariadb-10.0 USE_UNIT_THREADED=true
 
-    - d: dmd-2.078.3
+    - d: dmd
       addons:
         mariadb: '10.2'
         apt:
           packages: [ libevent-dev ]
       env: DB=mariadb-10.2 USE_UNIT_THREADED=true
 
-    - d: dmd-2.078.3
+    - d: dmd
       addons:
         mariadb: '10.3'
         apt:
@@ -128,27 +128,27 @@ matrix:
       env: DB=mariadb-10.3 USE_UNIT_THREADED=true
 
     # on Mac just test latest & oldest supported dmd and ldc
-    - d: dmd-2.080.0
+    - d: dmd
       env: DUB_SELECT=vibe-0.8.3 # DMDFE 2.079+ doesn't support vibe.d v0.7.32
       os: osx
-      osx_image: xcode9 # use OSX 10.13
+      osx_image: xcode11
 
     - d: dmd-2.079.1
       env: DUB_SELECT=vibe-0.8.3 # DMDFE 2.079+ doesn't support vibe.d v0.7.32
       os: osx
-      osx_image: xcode9 # use OSX 10.13
+      osx_image: xcode11
 
     - d: dmd-2.078.3
       os: osx
-      osx_image: xcode9 # use OSX 10.13
+      osx_image: xcode11
 
-    - d: ldc-1.9.0
+    - d: ldc
       os: osx
-      osx_image: xcode9 # use OSX 10.13
+      osx_image: xcode11
 
     - d: ldc-1.8.0
       os: osx
-      osx_image: xcode9 # use OSX 10.13
+      osx_image: xcode11
 
     - d: dmd-2.068.2
       os: osx
@@ -176,24 +176,24 @@ matrix:
     - d: dmd-2.080.0
       env: DUB_SELECT=vibe-0.8.3 # DMDFE 2.079+ doesn't support vibe.d v0.7.32
       os: osx
-      osx_image: xcode9 # use OSX 10.13
+      osx_image: xcode11
 
     - d: dmd-2.079.1
       env: DUB_SELECT=vibe-0.8.3 # DMDFE 2.079+ doesn't support vibe.d v0.7.32
       os: osx
-      osx_image: xcode9 # use OSX 10.13
+      osx_image: xcode11
 
     - d: dmd-2.078.3
       os: osx
-      osx_image: xcode9 # use OSX 10.13
+      osx_image: xcode11
 
     - d: ldc-1.9.0
       os: osx
-      osx_image: xcode9 # use OSX 10.13
+      osx_image: xcode11
 
     - d: ldc-1.8.0
       os: osx
-      osx_image: xcode9 # use OSX 10.13
+      osx_image: xcode11
 
     - d: dmd-2.068.2
       os: osx
