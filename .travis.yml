@@ -12,15 +12,25 @@ script: ./run_tests --mode=combined
 matrix:
   include:
     - d: dmd
+      env: DUB_SELECT=vibe-0.8.3 # DMDFE 2.079+ doesn't support vibe.d v0.7.32
     - d: ldc
+      env: DUB_SELECT=vibe-0.8.3 # DMDFE 2.079+ doesn't support vibe.d v0.7.32
     - d: dmd-2.087.0
+      env: DUB_SELECT=vibe-0.8.3 # DMDFE 2.079+ doesn't support vibe.d v0.7.32
     - d: dmd-2.086.1
+      env: DUB_SELECT=vibe-0.8.3 # DMDFE 2.079+ doesn't support vibe.d v0.7.32
     - d: dmd-2.085.1
+      env: DUB_SELECT=vibe-0.8.3 # DMDFE 2.079+ doesn't support vibe.d v0.7.32
     - d: dmd-2.084.1
+      env: DUB_SELECT=vibe-0.8.3 # DMDFE 2.079+ doesn't support vibe.d v0.7.32
     - d: dmd-2.083.1
+      env: DUB_SELECT=vibe-0.8.3 # DMDFE 2.079+ doesn't support vibe.d v0.7.32
     - d: dmd-2.082.1
+      env: DUB_SELECT=vibe-0.8.3 # DMDFE 2.079+ doesn't support vibe.d v0.7.32
     - d: dmd-2.081.2
+      env: DUB_SELECT=vibe-0.8.3 # DMDFE 2.079+ doesn't support vibe.d v0.7.32
     - d: dmd-2.080.1
+      env: DUB_SELECT=vibe-0.8.3 # DMDFE 2.079+ doesn't support vibe.d v0.7.32
     - d: dmd-2.080.0
       env: DUB_SELECT=vibe-0.8.3 # DMDFE 2.079+ doesn't support vibe.d v0.7.32
     - d: dmd-2.079.1
@@ -39,13 +49,21 @@ matrix:
     - d: dmd-2.069.2
     - d: dmd-2.068.2
     - d: ldc-1.17.0 # eq to dmd v2.087
+      env: DUB_SELECT=vibe-0.8.3 # DMDFE 2.079+ doesn't support vibe.d v0.7.32
     - d: ldc-1.16.0 # eq to dmd v2.086.1
+      env: DUB_SELECT=vibe-0.8.3 # DMDFE 2.079+ doesn't support vibe.d v0.7.32
     - d: ldc-1.15.0 # eq to dmd v2.085.1
+      env: DUB_SELECT=vibe-0.8.3 # DMDFE 2.079+ doesn't support vibe.d v0.7.32
     - d: ldc-1.14.0 # eq to dmd v2.084.1
+      env: DUB_SELECT=vibe-0.8.3 # DMDFE 2.079+ doesn't support vibe.d v0.7.32
     - d: ldc-1.13.0 # eq to dmd v2.083.1
+      env: DUB_SELECT=vibe-0.8.3 # DMDFE 2.079+ doesn't support vibe.d v0.7.32
     - d: ldc-1.12.0 # eq to dmd v2.082.1
+      env: DUB_SELECT=vibe-0.8.3 # DMDFE 2.079+ doesn't support vibe.d v0.7.32
     - d: ldc-1.11.0 # eq to dmd v2.081.2
+      env: DUB_SELECT=vibe-0.8.3 # DMDFE 2.079+ doesn't support vibe.d v0.7.32
     - d: ldc-1.10.0 # eq to dmd v2.080.1
+      env: DUB_SELECT=vibe-0.8.3 # DMDFE 2.079+ doesn't support vibe.d v0.7.32
     - d: ldc-1.9.0
       env: DUB_SELECT=vibe-0.8.3 # DMDFE 2.079+ doesn't support vibe.d v0.7.32
     - d: ldc-1.8.0
