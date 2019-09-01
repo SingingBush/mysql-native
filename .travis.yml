@@ -2,14 +2,14 @@ language: d
 sudo: false
 
 addons:
-  mariadb: '10.4'
+  mariadb: 10.4
   apt:
     packages: [ libevent-dev ]
 
 # https://travis-ci.community/t/mariadb-10-1-fails-to-install-on-xenial/3151/4
-before_install: mysql -u root -e 'CREATE USER IF NOT EXISTS travis@localhost; GRANT ALL ON *.* TO travis@localhost;'
-
-install: $DMD -ofci_setup ci_setup.d && ./ci_setup
+install:
+  - mysql -u root -e 'CREATE USER IF NOT EXISTS travis@localhost; GRANT ALL ON *.* TO travis@localhost;'
+  - $DMD -ofci_setup ci_setup.d && ./ci_setup
 
 script: ./run_tests --mode=combined
 
